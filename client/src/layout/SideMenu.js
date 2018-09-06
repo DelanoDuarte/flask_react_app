@@ -1,26 +1,23 @@
 import React, { Component } from 'react';
-import { Link, BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import {
-    ListItem,
-    ListItemIcon,
-    ListItemText,
     IconButton,
     AppBar,
     Divider,
     Toolbar,
     Typography,
     Drawer,
-    withStyles,
+    withStyles
 } from '@material-ui/core'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import { Home as HomeIcon, People, Assignment } from '@material-ui/icons'
 import classNames from 'classnames';
 
 // Components
-import { Home } from '../home/Home'
+import { MenuList } from './MenuList'
+import { AppRoutes } from '../routes'
 
 const drawerWidth = 240;
 
@@ -137,36 +134,14 @@ class SideMenu extends Component {
                         </div>
 
                         <Divider />
-                        <ListItem button component={Link} to="/">
-                            <ListItemIcon>
-                                <HomeIcon />
-                            </ListItemIcon>
-                            <ListItemText inset primary="Home" />
-                        </ListItem>
-                        <ListItem button component={Link} to="/usuarios">
-                            <ListItemIcon>
-                                <People />
-                            </ListItemIcon>
-                            <ListItemText inset primary="Usuários" />
-                        </ListItem>
-                        <ListItem button component={Link} to="/processos">
-                            <ListItemIcon>
-                                <Assignment />
-                            </ListItemIcon>
-                            <ListItemText inset primary="Processos" />
-                        </ListItem>
+
+                        <MenuList />
 
                     </Drawer>
 
                     <main className={classes.content}>
                         <div className={classes.toolbar} />
-                        <Route exact path="/" component={Home} />
-
-                        {/*<Route path="/usuarios" component={UsuarioList} />
-                        <Route path="/usuario/novo" component={NovoUsuarioComponent} />
-
-                        <Route path="/processos" component={ProcessoList} />
-                        <Route path="/processo/novo" component={NovoProcesso} /> */}
+                        <AppRoutes />
                     </main>
 
                 </div>
