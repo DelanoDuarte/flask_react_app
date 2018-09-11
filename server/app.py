@@ -2,6 +2,7 @@ from flask import Flask
 from flask_restful import Api, Resource
 
 from resources.ProcessoResource import ProcessoResource
+from resources.UserResource import UserResource
 
 
 class Home(Resource):
@@ -15,5 +16,6 @@ api = Api(app=flask_app, prefix='/api')
 
 api.add_resource(Home, '/')
 api.add_resource(ProcessoResource, '/processo')
+api.add_resource(UserResource, '/user')
 
 flask_app.run(debug=True)

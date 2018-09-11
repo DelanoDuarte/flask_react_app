@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import {
     IconButton,
     AppBar,
@@ -134,7 +134,6 @@ class SideMenu extends Component {
                         </div>
 
                         <Divider />
-
                         <MenuList />
 
                     </Drawer>
