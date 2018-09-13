@@ -10,5 +10,4 @@ class UserResource(Resource):
     ]
 
     def get(self):
-        return {'users':self.users}
-        
+        return {'users': self.users}

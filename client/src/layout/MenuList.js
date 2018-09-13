@@ -18,11 +18,11 @@ export class MenuList extends Component {
                     </ListItemIcon>
                     <ListItemText inset primary="Home" />
                 </ListItem>
-                <ListItem button component={Link} to="/usuarios">
+                <ListItem button component={Link} to="/users">
                     <ListItemIcon>
                         <People />
                     </ListItemIcon>
-                    <ListItemText inset primary="Usuários" />
+                    <ListItemText inset primary="Users" />
                 </ListItem>
                 <ListItem button component={Link} to="/processos">
                     <ListItemIcon>
