@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Divider } from '@material-ui/core'
+import { Link } from 'react-router-dom'
+import { Divider, Button } from '@material-ui/core'
 
 import { UserAPI } from './UserAPI'
 
@@ -27,6 +28,11 @@ export class UserList extends Component {
                 <h2>User List </h2>
                 <br />
                 <UsersGridComponent users={this.state.users} />
+
+                <br />
+                <Button variant="contained" color="primary" component={Link} to="/users/new">
+                    New User
+                </Button>
             </div>
         )
     }

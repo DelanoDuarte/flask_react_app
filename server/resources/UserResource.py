@@ -1,4 +1,5 @@
 from flask_restful import Resource
+from flask import request
 
 
 class UserResource(Resource):
@@ -11,3 +12,8 @@ class UserResource(Resource):
 
     def get(self):
         return {'users': self.users}
+
+    def post(self):
+        data = request.get_json()
+        print(data['user'])
+        pass

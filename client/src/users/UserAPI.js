@@ -2,6 +2,9 @@ import { devUrl } from './../common/common'
 
 const url = `${devUrl}/user`;
 
+const headers = new Headers()
+headers.append("Content-Type", "application/json")
+
 export class UserAPI {
 
     getAllUsers() {
@@ -10,7 +13,12 @@ export class UserAPI {
     }
 
     newUser(user) {
-        return fetch(url, { method: 'POST', body: JSON.stringify(user) })
+        return fetch(url,
+            {
+                method: 'POST',
+                body: JSON.stringify(user),
+                headers: headers
+            })
             .then(res => res.json())
     }
 

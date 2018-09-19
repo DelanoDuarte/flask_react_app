@@ -18,7 +18,7 @@ export class Home extends Component {
                         <Card>
                             <CardContent>
                                 <Typography color="textSecondary">
-                                    Word of the Day
+
                                 </Typography>
                                 {/* <ChartComponent type="pie" data={[10, 30, 54]} labels={["Teste1", "Teste2", "Teste3"]} /> */}
                             </CardContent>
@@ -29,7 +29,7 @@ export class Home extends Component {
                         <Card>
                             <CardContent>
                                 <Typography color="textSecondary">
-                                    Word of the Day
+
                                 </Typography>
                                 {/* <ChartComponent type="pie" data={[32, 54, 48]} labels={["Teste1", "Teste2", "Teste3"]} /> */}
                             </CardContent>
@@ -40,7 +40,7 @@ export class Home extends Component {
                         <Card>
                             <CardContent>
                                 <Typography color="textSecondary">
-                                    Word of the Day
+
                                 </Typography>
                                 {/* <ChartComponent type="pie" data={[6, 47, 85]} labels={["Teste1", "Teste2", "Teste3"]} /> */}
                             </CardContent>
