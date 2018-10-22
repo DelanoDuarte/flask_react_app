@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Table, TableHead, TableBody, TableCell, TableRow } from '@material-ui/core'
+import { Card, CardContent, Table, TableHead, TableBody, TableCell, TableRow } from '@material-ui/core'
 
 export class UsersGridComponent extends Component {
 
@@ -10,33 +10,37 @@ export class UsersGridComponent extends Component {
     render() {
         return (
             <div>
-                <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>
-                                Name
-                        </TableCell>
-                            <TableCell>
-                                Surname
-                        </TableCell>
-                        </TableRow>
-                    </TableHead>
-
-                    <TableBody>
-                        {this.props.users.map(u => {
-                            return (
-                                <TableRow key={u.id}>
-                                    <TableCell component="th" scope="row">
-                                        {u.name}
-                                    </TableCell>
+                <Card>
+                    <CardContent>
+                        <Table>
+                            <TableHead>
+                                <TableRow>
                                     <TableCell>
-                                        {u.surname}
-                                    </TableCell>
+                                        Name
+                        </TableCell>
+                                    <TableCell>
+                                        Surname
+                        </TableCell>
                                 </TableRow>
-                            )
-                        })}
-                    </TableBody>
-                </Table>
+                            </TableHead>
+
+                            <TableBody>
+                                {this.props.users.map(u => {
+                                    return (
+                                        <TableRow key={u.id}>
+                                            <TableCell component="th" scope="row">
+                                                {u.name}
+                                            </TableCell>
+                                            <TableCell>
+                                                {u.surname}
+                                            </TableCell>
+                                        </TableRow>
+                                    )
+                                })}
+                            </TableBody>
+                        </Table>
+                    </CardContent>
+                </Card>
             </div>
         )
     }

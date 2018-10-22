@@ -1,9 +1,19 @@
 import React, { Component } from 'react'
-import { Card, CardContent, Grid, TextField, CardHeader, Typography, Button } from '@material-ui/core'
+import { Link } from 'react-router-dom'
+import { Card, CardContent, Grid, TextField, Typography, Button } from '@material-ui/core'
 import { UserAPI } from './UserAPI'
 
 
 const userAPI = new UserAPI();
+
+const user_css = {
+
+    custom_button: {
+        padding: '5px'
+    }
+
+}
+
 
 export class NewUser extends Component {
 
@@ -28,9 +38,11 @@ export class NewUser extends Component {
             name: this.state.name,
             surname: this.state.surname
         }
-
-        userAPI.newUser({ "user": user })
-            .then(data => { console.log(data) })
+        userAPI
+            .newUser({ "user": user })
+            .then(data => {
+                this.props.history.push('/users')
+            })
     }
 
     render() {
@@ -52,6 +64,7 @@ export class NewUser extends Component {
                                     value={this.state.name}
                                     onChange={this.handleChange('name')}
                                     margin="normal"
+                                    required="true"
                                 />
                             </Grid>
 
@@ -62,15 +75,22 @@ export class NewUser extends Component {
                                     value={this.state.surname}
                                     onChange={this.handleChange('surname')}
                                     margin="normal"
+                                    required="true"
                                 />
                             </Grid>
                         </Grid>
 
                         <br />
 
-                        <Button name="Save" variant="contained" color="primary" onClick={this.save}>
-                            Save
-                        </Button>
+                        <Grid>
+                            <Button className={user_css.custom_button} name="Save" variant="contained" color="primary" onClick={this.save}>
+                                Save
+                            </Button>
+
+                            <Button variant="contained" color="secondary" component={Link} to="/users">
+                                Cancel
+                            </Button>
+                        </Grid>
 
                     </CardContent>
                 </Card>

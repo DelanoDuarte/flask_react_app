@@ -1,5 +1,6 @@
 from flask_restful import Resource
 from flask import request
+from flask_jwt import jwt_required
 
 
 class ProcessoResource(Resource):
@@ -10,6 +11,7 @@ class ProcessoResource(Resource):
         {"id": 3, "nome": "Processo Teste3"}
     ]
 
+    @jwt_required()
     def get(self):
         return {"processos": self.processos}, 200
 
