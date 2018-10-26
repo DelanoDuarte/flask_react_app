@@ -34,4 +34,4 @@ class CurrentUserResource(Resource):
     @jwt_required()
     def get(self):
         print(current_identity)
-        return {'user_id': current_identity}
+        return {'user_id': current_identity['identity']}

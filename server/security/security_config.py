@@ -1,5 +1,6 @@
 from util.constants import users, users_table
 from models.user import User
+from models.person import Person
 
 
 def autenticate(username, password):

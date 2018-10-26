@@ -1,4 +1,5 @@
 from models.user import User
+from datetime import timedelta
 
 users = [
     {
@@ -41,3 +42,5 @@ users_table = [
 ]
 
 secret = "app_secret"
+
+expiration_time = timedelta(days=1)
