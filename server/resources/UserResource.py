@@ -3,8 +3,13 @@ from flask import request
 from flask_jwt import jwt_required, current_identity
 import uuid
 
+from repository.user_repository import UserRepository
+from models.user import User
+
 
 class UserResource(Resource):
+
+    repository = UserRepository()
 
     users = [
         {"id": 1, "name": "Jamal", "surname": "Jones", "roles": ["ADMIN"]},
@@ -35,3 +40,19 @@ class CurrentUserResource(Resource):
     def get(self):
         print(current_identity)
         return {'user_id': current_identity['identity']}
+
+
+class SignInResource(Resource):
+
+    repository = UserRepository()
+
+    def post(self):
+        data = request.get_json()
+        u = data['user']
+        user = User(u['name'], u['surname'], u['email'],
+                    u['username'], u['password'])
+        new_user = self.repository.save(user)
+        if new_user != None:
+            return {'result': 'user created'}, 201
+
+        return {'result': 'error'}, 500

@@ -8,8 +8,8 @@ from security.security_config import autenticate, identity
 from config.database import init_db
 
 from resources.ProcessoResource import ProcessoResource
-from resources.UserResource import UserResource, CurrentUserResource
-from resources.person_resource import PersonResource
+from resources.UserResource import UserResource, CurrentUserResource, SignInResource
+from resources.person_resource import PersonResource, PersonFindResource
 
 
 class Home(Resource):
@@ -43,9 +43,11 @@ api.add_resource(ProcessoResource, '/processo')
 # user routes
 api.add_resource(UserResource, '/user')
 api.add_resource(CurrentUserResource, '/user/in')
+api.add_resource(SignInResource, '/user/sing_in')
 
 # person routes
 api.add_resource(PersonResource, '/person')
+api.add_resource(PersonFindResource, '/person/<int:id>')
 
 init_db()
 flask_app.run(debug=True)

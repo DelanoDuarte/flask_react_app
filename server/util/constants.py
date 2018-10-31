@@ -38,7 +38,7 @@ users = [
 ]
 
 users_table = [
-    User(1, 'Jamal', 'Jones', 'jamal.jones', 'jam123', ['ADMIN'])
+    # User(1, 'Jamal', 'Jones', 'jamal.jones', 'jam123', ['ADMIN'])
 ]
 
 secret = "app_secret"
