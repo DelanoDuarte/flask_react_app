@@ -36,10 +36,23 @@ class UserResource(Resource):
 
 class CurrentUserResource(Resource):
 
+    repository = UserRepository()
+
     @jwt_required()
     def get(self):
-        print(current_identity)
-        return {'user_id': current_identity['identity']}
+        user = self.repository.find_one(int(current_identity))
+        authenticated_user = {
+            'id': user.id,
+            'name': user.name,
+            'surname': user.surname,
+            'email': user.email,
+            'username': user.username
+        }
+
+        if user:
+            return {'user': authenticated_user}
+
+        return {'user': 'not found'}
 
 
 class SignInResource(Resource):

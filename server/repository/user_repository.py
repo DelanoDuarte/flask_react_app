@@ -18,7 +18,8 @@ class UserRepository():
         pass
 
     def find_one(self, id):
-        pass
+        user = User.query.filter(User.id == id).first()
+        return user
 
     def find_all(self):
         users = User.query.all()
