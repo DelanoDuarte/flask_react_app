@@ -9,15 +9,21 @@ import {
     Drawer,
     withStyles
 } from '@material-ui/core'
+
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+
 import MenuIcon from '@material-ui/icons/Menu';
+import Menu from '@material-ui/core/Menu'
+import MenuItem from '@material-ui/core/MenuItem';
 
 import classNames from 'classnames';
 
 // Components
 import { MenuList } from './MenuList'
 import { AppRoutes } from '../routes'
+import { AuthenticatedUserComponent } from '../users/AuthenticatedUserComponent';
 
 const drawerWidth = 240;
 
@@ -89,6 +95,8 @@ class SideMenu extends Component {
 
     state = {
         open: false,
+        auth: true,
+        anchorEl: null
     };
 
     handleDrawerOpen = () => {
@@ -99,8 +107,19 @@ class SideMenu extends Component {
         this.setState({ open: false });
     };
 
+    handleClose = () => {
+        this.setState({ anchorEl: null });
+    };
+
+    handleMenu = event => {
+        this.setState({ anchorEl: event.currentTarget });
+    };
+
     render() {
         const { classes, theme } = this.props;
+        const { auth, anchorEl } = this.state;
+        const open = Boolean(anchorEl);
+
         return (
             <Router>
                 <div className={classes.root}>
@@ -118,6 +137,37 @@ class SideMenu extends Component {
                             <Typography variant="title" color="inherit" noWrap>
                                 Flask React App
                             </Typography>
+                            {auth && (
+                                <div>
+                                    <IconButton
+                                        aria-owns={open ? 'menu-appbar' : undefined}
+                                        aria-haspopup="true"
+                                        onClick={this.handleMenu}
+                                        color="inherit"
+                                    >
+                                        <AccountCircle />
+                                    </IconButton>
+                                    <Menu
+                                        id="menu-appbar"
+                                        anchorEl={anchorEl}
+                                        anchorOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'right',
+                                        }}
+                                        transformOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'right',
+                                        }}
+                                        open={open}
+                                        onClose={this.handleClose}
+                                    >
+                                        <AuthenticatedUserComponent />
+                                        <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+                                        {/* <MenuItem onClick={this.handleClose}>My account</MenuItem> */}
+                                    </Menu>
+                                </div>
+                            )}
+
                         </Toolbar>
                     </AppBar>
                     <Drawer

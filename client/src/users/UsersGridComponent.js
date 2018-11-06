@@ -21,6 +21,9 @@ export class UsersGridComponent extends Component {
                                     <TableCell>
                                         Surname
                         </TableCell>
+                                    <TableCell>
+                                        Email
+                        </TableCell>
                                 </TableRow>
                             </TableHead>
 
@@ -33,6 +36,9 @@ export class UsersGridComponent extends Component {
                                             </TableCell>
                                             <TableCell>
                                                 {u.surname}
+                                            </TableCell>
+                                            <TableCell>
+                                                {u.email}
                                             </TableCell>
                                         </TableRow>
                                     )

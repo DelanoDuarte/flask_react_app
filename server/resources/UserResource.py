@@ -11,15 +11,20 @@ class UserResource(Resource):
 
     repository = UserRepository()
 
-    users = [
-        {"id": 1, "name": "Jamal", "surname": "Jones", "roles": ["ADMIN"]},
-        {"id": 2, "name": "Tim", "surname": "Horton", "roles": ["USER"]},
-        {"id": 3, "name": "James", "surname": "Sullivan", "roles": ["USER"]}
-    ]
-
     @jwt_required()
     def get(self):
-        return {'users': self.users}
+        users_json = []
+        users = self.repository.find_all()
+        for user in users:
+            user_json = {
+                'name': user.name,
+                'surname': user.surname,
+                'username': user.username,
+                'email': user.email,
+                'roles': user.roles
+            }
+            users_json.append(user_json)
+        return {'users': users_json}
 
     @jwt_required()
     def post(self):
@@ -30,7 +35,6 @@ class UserResource(Resource):
             "name": user_data['name'],
             "surname": user_data['surname']
         }
-        self.users.append(user)
         return {'user': user}
 
 
@@ -46,7 +50,8 @@ class CurrentUserResource(Resource):
             'name': user.name,
             'surname': user.surname,
             'email': user.email,
-            'username': user.username
+            'username': user.username,
+            'roles': user.roles
         }
 
         if user:
